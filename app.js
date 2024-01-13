@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -26,8 +27,7 @@ app.use(
 );
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const dev_db_url = "mongodb+srv://nguyenhuynh:PhoneQuery9497+@atlascluster.zengp2a.mongodb.net/local_library?retryWrites=true&w=majority";
-const mongoDB =  process.env.MONGODB_URI || dev_db_url;
+const mongoDB =  process.env.MONGODB_URI;
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
